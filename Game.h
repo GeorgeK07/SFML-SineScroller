@@ -14,7 +14,9 @@ Game class function signatures
 class Game {
   private:
     sf::RenderWindow* win;
-    CharObject* rect_obj;
+    CharObject** rect_obj;
+    std::string msg;
+    int msg_size;
   public:
     // Create Game object with certain screen settings
     Game();
