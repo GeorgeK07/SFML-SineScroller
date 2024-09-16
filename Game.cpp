@@ -16,9 +16,11 @@ Game::Game() {
   sf::View view(sf::Vector2f(160, 120), sf::Vector2f(320, 240));
   win->setView(view);
   win->setPosition(
-      sf::Vector2i(sf::VideoMode::getDesktopMode().width / 2 - 320,
-                   sf::VideoMode::getDesktopMode().height / 2 - 240));
-  win->setFramerateLimit(60);
+    sf::Vector2i(sf::VideoMode::getDesktopMode().width / 2 - 320,
+    sf::VideoMode::getDesktopMode().height / 2 - 240));
+  // Set framelimit to 60fps (Cannot be on at same time as vsync)
+  // win->setFramerateLimit(60);
+  win->setVerticalSyncEnabled(true); // Uncomment for vsync
   //  Create message and get its length, then use it to create a CharObject
   // pointer array
   msg = "Hello this is a test for my sine wave scroller made in SFML. This is "
