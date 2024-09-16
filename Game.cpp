@@ -4,7 +4,6 @@ Game class function definitions
 
 // Include libraries
 #include <SFML/Graphics.hpp>
-#include <iostream>
 // Include local header files
 #include "CharObject.h"
 #include "Game.h"
