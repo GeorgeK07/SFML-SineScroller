@@ -5,7 +5,6 @@ Driver file
 // Include libraries
 #include <SFML/Graphics.hpp>
 // Include local header files
-#include "CharObject.h"
 #include "Game.h"
 
 // Main function
