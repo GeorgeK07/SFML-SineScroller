@@ -1,5 +1,5 @@
 # SFML-SineScroller
-A sine scroller effect made in SFML with C++, adhering to Object Oriented Programming design principles.
+A sine scroller effect made in SFML with C++, adhering to Object Oriented Programming design principles. Made for monospace fonts but could be updated for non-monospace fonts.
 
 https://github.com/user-attachments/assets/096869d2-440f-472b-bfbf-64a889400032
 
@@ -13,3 +13,9 @@ This program was built and tested with:
   * libsfml-dev 2.5.1+dfsg-2
 
 It will most likely work with newer or older versions and other operating systems, however, there may be some breaking changes that cause it not to run.
+
+## Credits
+The FontStruction “Darius / Darius II (Large)”
+(https://fontstruct.com/fontstructions/show/1651840) by Patrick H. Lauke is
+licensed under a Creative Commons Attribution license
+(http://creativecommons.org/licenses/by/3.0/).

@@ -27,7 +27,7 @@ class CharObject {
     // Create char_obj object
     CharObject();
     // Create char_obj object with arg_char
-    CharObject(char arg_char);
+    CharObject(char arg_char, std::string arg_font, int arg_char_size, sf::Color arg_color);
     // Move char_obj
     void moveObj();
     // Move char_obj in sine wave

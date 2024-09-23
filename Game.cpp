@@ -36,11 +36,11 @@ Game::Game() {
   double offset_sine_pos = 0;
   for (int i = 0; i < msg_size; i++) {
     // Create dynamic charObjects in indexed element of character array
-    rect_obj[i] = new CharObject(msg[i]);
+    rect_obj[i] = new CharObject(msg[i], "darius-darius-ii-large.ttf", 16, sf::Color::White);
     // Offset the x_pos of the charObject by an ever increasing amount
     new_x_pos = rect_obj[i]->getXPos() + offset_x_pos;
     rect_obj[i]->setXPos(new_x_pos);
-    offset_x_pos = offset_x_pos + 9;
+    offset_x_pos = offset_x_pos + 18;
     // Offset the sine_pos of the charObject by an ever increasing amount
     new_sine_pos = rect_obj[i]->getSinePos() + offset_sine_pos;
     rect_obj[i]->setSinePos(new_sine_pos);

@@ -21,25 +21,25 @@ CharObject::CharObject() {
   a_channel = 255;
   rg_second_loop = 0;
   b_second_loop = 0;
+}
+
+// Create char_obj object
+CharObject::CharObject(char arg_char, std::string arg_font, int arg_char_size, sf::Color arg_color) : CharObject() {
   // Load font
   font = new sf::Font;
-  font->loadFromFile("PublicPixel.ttf");
-  if (!font->loadFromFile("PublicPixel.ttf")) {
+  font->loadFromFile(arg_font);
+  if (!font->loadFromFile(arg_font)) {
     std::cout << "Font failed to load.\n";
     exit(1);
   }
   // Create new object and set properties
   char_obj = new sf::Text;
   char_obj->setFont(*font);
-  char_obj->setCharacterSize(8);
-  char_obj->setFillColor(sf::Color::White);
-  char_obj->setPosition(x_pos, y_pos);
-  char_obj->setOrigin(5, 5);
-}
-
-// Create char_obj object
-CharObject::CharObject(char arg_char) : CharObject() {
+  char_obj->setCharacterSize(arg_char_size);
+  char_obj->setFillColor(arg_color);
   char_obj->setString(arg_char);
+  char_obj->setPosition(x_pos, y_pos);
+  char_obj->setOrigin(arg_char_size / 2, arg_char_size / 2); // For monospace
 }
 
 // Move char_obj
@@ -49,7 +49,7 @@ void CharObject::moveObj() { char_obj->move(1, 1); }
 void CharObject::moveSineObj() {
   char_obj->setPosition(x_pos, y_pos);
   char_obj->move(-1, 0);
-  char_obj->setPosition(char_obj->getPosition().x, y_pos + 32 * sin(sine_pos));
+  char_obj->setPosition(char_obj->getPosition().x, y_pos + 40 * sin(sine_pos));
   sine_pos = sine_pos + 0.1;
   x_pos = char_obj->getPosition().x;
 }
