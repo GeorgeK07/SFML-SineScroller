@@ -12,7 +12,7 @@ This program was built and tested with:
   * g++ 4:11.2.0-1ubuntu1
   * libsfml-dev 2.5.1+dfsg-2
 
-It will most likely work with newer or older versions and other operating systems, however, there may be some breaking changes that cause it not to run.
+It will most likely work with newer or older versions and other operating systems, however, there may be some breaking changes that cause it not to build or run.
 
 ## Credits
 The FontStruction “Darius / Darius II (Large)”
