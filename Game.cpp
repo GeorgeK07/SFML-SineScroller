@@ -11,15 +11,15 @@ Game class function definitions
 // Create Game object with certain screen settings
 Game::Game() {
   // Create 640x480 screen and scale 320x240 to it
-  win = new sf::RenderWindow(sf::VideoMode(640, 480), "SFML-SineScroller");
+  win = new sf::RenderWindow(sf::VideoMode({640, 480}), "SFML-SineScroller");
   sf::View view(sf::Vector2f(160, 120), sf::Vector2f(320, 240));
   win->setView(view);
   win->setPosition(
-    sf::Vector2i(sf::VideoMode::getDesktopMode().width / 2 - 320,
-    sf::VideoMode::getDesktopMode().height / 2 - 240));
+    sf::Vector2i(sf::VideoMode::getDesktopMode().size.x / 2 - 320,
+    sf::VideoMode::getDesktopMode().size.y / 2 - 240));
   // Set framelimit to 60fps (Cannot be on at same time as vsync)
-  win->setFramerateLimit(60);
-  // win->setVerticalSyncEnabled(true); // Uncomment for vsync
+  // win->setFramerateLimit(60);
+  win->setVerticalSyncEnabled(true); // Uncomment for vsync
   //  Create message and get its length, then use it to create a CharObject
   // pointer array
   msg = "Hello this is a test for my sine wave scroller made in SFML. This is "
@@ -31,8 +31,8 @@ Game::Game() {
   // x_pos Create var for new x position and offset
   int new_x_pos = 0;
   int offset_x_pos = 0;
-  double new_sine_pos = 0;
-  double offset_sine_pos = 0;
+  float new_sine_pos = 0;
+  float offset_sine_pos = 0;
   for (int i = 0; i < msg_size; i++) {
     // Create dynamic charObjects in indexed element of character array
     rect_obj[i] = new CharObject(msg[i], "darius-darius-ii-large.ttf", 16, sf::Color::White);
@@ -51,12 +51,10 @@ Game::Game() {
 void Game::gameLoop() {
   // While the window is open, check if window has been closed, then render game
   while (win->isOpen()) {
-    // Create Event object event
-    sf::Event event;
     //  While events are polled, check if window close event has occured, and
     // close window if so
-    while (win->pollEvent(event)) {
-      if (event.type == sf::Event::Closed) {
+    while (const std::optional event = win->pollEvent()) {
+      if (event->is<sf::Event::Closed>()) {
         win->close();
       }
     }

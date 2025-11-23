@@ -14,9 +14,9 @@ class CharObject {
     sf::Text* char_obj;
     sf::Font* font;
     char disp_char;
-    int x_pos;
-    int y_pos;
-    double sine_pos;
+    float x_pos;
+    float y_pos;
+    float sine_pos;
     uint8_t r_channel;
     uint8_t g_channel;
     uint8_t b_channel;
@@ -49,9 +49,9 @@ class CharObject {
     // Get y_pos
     int getYPos();
     // Set sine_pos
-    void setSinePos(double arg_sine_pos);
+    void setSinePos(float arg_sine_pos);
     // Get sine_pos
-    double getSinePos();
+    float getSinePos();
     // Delete all char_obj related objects
     ~CharObject();
 };

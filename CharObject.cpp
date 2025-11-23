@@ -27,29 +27,29 @@ CharObject::CharObject() {
 CharObject::CharObject(char arg_char, std::string arg_font, int arg_char_size, sf::Color arg_color) : CharObject() {
   // Load font
   font = new sf::Font;
-  font->loadFromFile(arg_font);
-  if (!font->loadFromFile(arg_font)) {
+  bool isExisting = font->openFromFile(arg_font);
+  if (!isExisting) {
     std::cout << "Font failed to load.\n";
     exit(1);
   }
+  font->setSmooth(false);
   // Create new object and set properties
-  char_obj = new sf::Text;
-  char_obj->setFont(*font);
+  char_obj = new sf::Text(*font);
   char_obj->setCharacterSize(arg_char_size);
   char_obj->setFillColor(arg_color);
   char_obj->setString(arg_char);
-  char_obj->setPosition(x_pos, y_pos);
-  char_obj->setOrigin(arg_char_size / 2, arg_char_size / 2); // For monospace
+  char_obj->setPosition({x_pos, y_pos});
+  char_obj->setOrigin({(float)(arg_char_size / 2), (float)(arg_char_size / 2)}); // For monospace
 }
 
 // Move char_obj
-void CharObject::moveObj() { char_obj->move(1, 1); }
+void CharObject::moveObj() { char_obj->move({1, 1}); }
 
 // Move char_obj in sine wave
 void CharObject::moveSineObj() {
-  char_obj->setPosition(x_pos, y_pos);
-  char_obj->move(-1, 0);
-  char_obj->setPosition(char_obj->getPosition().x, y_pos + 40 * sin(sine_pos));
+  char_obj->setPosition({x_pos, y_pos});
+  char_obj->move({-1, 0});
+  char_obj->setPosition({char_obj->getPosition().x, (float)(y_pos + 40 * sin(sine_pos))});
   sine_pos = sine_pos + 0.1;
   x_pos = char_obj->getPosition().x;
 }
@@ -108,10 +108,10 @@ void CharObject::setYPos(int arg_y_pos) { y_pos = arg_y_pos; }
 int CharObject::getYPos() { return y_pos; }
 
 // Set sine_pos
-void CharObject::setSinePos(double arg_sine_pos) { sine_pos = arg_sine_pos; }
+void CharObject::setSinePos(float arg_sine_pos) { sine_pos = arg_sine_pos; }
 
 // Get sine_pos
-double CharObject::getSinePos() { return sine_pos; }
+float CharObject::getSinePos() { return sine_pos; }
 
 // Delete all char_obj related objects
 CharObject::~CharObject() {
